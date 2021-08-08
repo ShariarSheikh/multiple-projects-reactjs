@@ -15,9 +15,12 @@ function App() {
           {/* home page left sidebar  */}
           <Sidebar />
           {/* dynamic rendering components */}
-          <div  className="w-full flex justify-start flex-grow">
+          <div className="w-full pl-10">
             <Switch>
-              <Route exact path="/todos">
+              <Route exact path="/">
+                <FirstScreen/>
+              </Route>
+              <Route path="/todos">
                 <Todos />
               </Route>
               <Route path="/covid-tracker">
@@ -32,3 +35,12 @@ function App() {
 }
 
 export default App;
+
+const FirstScreen = () => {
+  return (
+    <div className="w-full h-full flex items-center justify-center flex-col">
+      <h1 className="text-4xl font-bold mb-4 pt-10">Explore My Website</h1>
+      <p className="text-xl text-blue-500">You can use this code in your site</p>
+    </div>
+  );
+};

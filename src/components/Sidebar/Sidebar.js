@@ -28,7 +28,7 @@ const Sidebar = () => {
             onClick={() => routeHandler(link)}
             key={id}
             className="text-gray-500 pr-3 y-3 font-semibold 
-            cursor-pointer rounded-sm hover:bg-gray-100 "
+            cursor-pointer rounded-sm hover:bg-gray-100"
           >
             {name}
           </div>

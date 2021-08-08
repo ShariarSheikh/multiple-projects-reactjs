@@ -1,135 +1,20 @@
+import ProjectHeader from "../../components/ProjectHeader/ProjectHeader";
+
 const Todos = () => {
-    return (
-        <section>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <br />
-            <br />
-            <br />
-            <br />     <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <br />
-            <br />
-            <br />
-            <br />     <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <br />
-            <br />
-            <br />
-            <br />     <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <br />
-            <br />
-            <br />
-            <br />     <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <p>todo application</p>
-            <br />
-            <br />
-            <br />
-            <br />
+  return (
+    <section className="relative bg-green-400">
+      <ProjectHeader
+        projectName={"Todos"}
+        githubLink={
+          "https://github.com/ShariarSheikh/multiple-projects-reactjs"
+        }
+      />
+      {/* todos container */}
+      <div>
+          <h1>askfdl;aksdf;lsajdflskadjf</h1>
+      </div>
+    </section>
+  );
+};
 
-        </section>
-    )
-}
-
-export default Todos
+export default Todos;

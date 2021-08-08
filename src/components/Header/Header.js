@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { RiArrowDownSFill } from "react-icons/ri";
+import { AiFillGithub } from "react-icons/ai";
 
 const Header = () => {
   const [showProfile, setShowProfile] = useState(false);
@@ -14,22 +15,26 @@ const Header = () => {
         <h3 className="text-2xl font-bold cursor-pointer">Dev.S</h3>
       </div>
       {/* right */}
-      <div
-        className="relative flex items-center justify-end space-x-2"
-        onClick={() => setShowProfile((prevState) => !prevState)}
-      >
-        <div className="flex justify-center items-center w-9 h-9 rounded-full border-2 border-blue-500 cursor-pointer">
+      <div className="relative flex items-center justify-end space-x-4">
+        <a href="https://github.com/ShariarSheikh">
+          <AiFillGithub className="w-9 h-9" />
+        </a>
+        <div
+          className="flex justify-center items-center cursor-pointer space-x-2"
+          onClick={() => setShowProfile((prevState) => !prevState)}
+        >
           <img
-            className="w-full h-full object-cover rounded-full"
+            className="object-cover w-9 h-9 rounded-full border-2 border-blue-500"
             src="https://media.istockphoto.com/photos/illustration-of-smiling-happy-man-with-laptop-sitting-in-armchair-picture-id1226886130?b=1&k=6&m=1226886130&s=170667a&w=0&h=9VyVuQvQfzzQaYB1iEfy-p5YaEe59lzeIe3BfkTOnBE="
             alt="person profile"
           />
+          <RiArrowDownSFill className="w-6 h-6 text-blue-500 cursor-pointer" />
         </div>
-        <RiArrowDownSFill className="w-6 h-6 text-blue-500 cursor-pointer" />
+        {/* profile drop down menu  */}
         <div
           className={`absolute top-10 shadow-xl ${
             showProfile ? "inline-block" : "hidden"
-          } w-52 py-5 px-4`}
+          } w-52 py-5 px-4 z-50 bg-white`}
         >
           <p className="cursor-pointer hover:text-blue-500 text-gray-600 text-sm font-semibold mb-2">
             Profile
