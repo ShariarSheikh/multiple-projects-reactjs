@@ -5,7 +5,7 @@ const Header = () => {
   const [showProfile, setShowProfile] = useState(false);
   console.log(showProfile);
   return (
-    <header className="sticky top-0 grid grid-cols-2 py-8 px-16">
+    <header className="sticky top-0 grid grid-cols-2 py-8 px-16 bg-white z-50">
       {/* left  */}
       <div className="flex items-center justify-start">
         <h1 className="text-2xl text-blue-500 font-bold cursor-pointer">

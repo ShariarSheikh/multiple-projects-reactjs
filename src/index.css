@@ -2,3 +2,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .sidebar-h {
+    min-width: 220px;
+    max-width: 220px;
+  }
+}
