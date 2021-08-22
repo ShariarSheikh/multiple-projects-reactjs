@@ -15,7 +15,7 @@ const CovidTracker = () => {
   const [countryLocation, setCountryLocation] = useState({
     lat: 37.7577,
     long: -122.4376,
-    zoom: 6,
+    zoom: 5,
   });
 
   //on page reload call these api
@@ -34,7 +34,7 @@ const CovidTracker = () => {
             casesPerOneMillion: country.casesPerOneMillion,
             deaths: country.deaths,
           }));
-          //collect countries data 
+          //collect countries data
           setTable(tableList);
         });
     };
@@ -69,13 +69,13 @@ const CovidTracker = () => {
           setCountryLocation({
             lat: 37.7577,
             long: -122.4376,
-            zoom: 6,
+            zoom: 5,
           });
         } else {
           setCountryLocation({
             lat: data.countryInfo.lat,
             long: data.countryInfo.long,
-            zoom: 8,
+            zoom: 5,
           });
         }
 
@@ -138,7 +138,7 @@ const CovidTracker = () => {
             />
           </div>
           {/* live cases component */}
-          <div className="live-case-component border border-gray-400 mt-10">
+          <div className="w-full md:w-auto md:overflow-hidden border border-gray-400 mt-10">
             <LiveCases countries={table} />
           </div>
         </section>

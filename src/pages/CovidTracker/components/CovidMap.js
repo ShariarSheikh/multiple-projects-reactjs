@@ -5,7 +5,7 @@ const CovidMap = ({ zoom, lat, long }) => {
   const [viewport, setViewport] = useState({
     latitude: 37.7577,
     longitude: -122.4376,
-    zoom: 8,
+    zoom: 5,
   });
 
   useEffect(() => {

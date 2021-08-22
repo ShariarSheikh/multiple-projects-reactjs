@@ -1,11 +1,11 @@
 const LiveCases = ({ countries }) => {
   return (
-    <div className="w-full h-full px-4 py-3">
+    <div className="w-full h-full px-4 py-3 live-case-component lg:px-0">
       <h1 className="text-2xl font-semibold text-gray-100">
         Live Cases by Country
       </h1>
       {/* table */}
-      <div className="max-h-96 overflow-y-scroll">
+      <div className="max-h-96 overflow-y-scroll md:overflow-y-hidden">
         <table className="min-w-full">
           <thead>
             <tr>
