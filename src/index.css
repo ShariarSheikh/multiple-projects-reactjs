@@ -3,9 +3,25 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .sidebar-h {
-    min-width: 220px;
-    max-width: 220px;
-  }
+/* main app background */
+.header-bg {
+  background: #0d1117;
+}
+.main-app {
+  background: #0d1117;
+}
+
+.covid-bg {
+  background: #202124;
+}
+
+/* live cases component */
+.live-case-component {
+  width: 768px;
+  margin: auto;
+  margin-top: 40px;
+}
+/* map height */
+.map-h {
+  height: 550px;
 }

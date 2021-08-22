@@ -1,21 +1,44 @@
 import { useState } from "react";
-import { RiArrowDownSFill } from "react-icons/ri";
 import { AiFillGithub } from "react-icons/ai";
+import { Link } from "react-router-dom";
+
+const projectListName = [
+  {
+    id: 1,
+    name: "Todos",
+    link: "/",
+  },
+  {
+    id: 2,
+    name: "Covid-Tracker",
+    link: "/covid-tracker",
+  },
+];
 
 const Header = () => {
   return (
-    <header className="sticky top-0 flex justify-between py-8 px-8 md:px-16 bg-white z-50">
+    <header className="sticky top-0 flex justify-between h-20 py-8 px-8 md:px-16 z-50 header-bg border-b border-gray-600">
       {/* left  */}
       <div className="flex items-center justify-start">
-        <h1 className="hidden md:inline-block text-2xl text-blue-500 font-bold cursor-pointer">
-          Multiple Projects Example |
+        <h1 className="hidden md:inline-block text-2xl text-white font-bold cursor-pointer">
+          Example |
         </h1>
-        <h3 className="text-2xl font-bold cursor-pointer">Dev.S</h3>
+        <h3 className="text-2xl font-bold cursor-pointer text-gray-50">Dev.S</h3>
       </div>
+
+      {/* middle */}
+      <div className="relative h-full flex items-center space-x-3">
+        {projectListName.map(({ id, name, link }) => (
+          <Link key={id} to={link} className="text-sm font-bold text-white">
+            {name}
+          </Link>
+        ))}
+      </div>
+
       {/* right */}
       <div className="relative flex items-center justify-end space-x-4">
         <a href="https://github.com/ShariarSheikh">
-          <AiFillGithub className="w-9 h-9" />
+          <AiFillGithub className="w-9 h-9 text-white" />
         </a>
         <a
           href="https://shariar.vercel.app/"

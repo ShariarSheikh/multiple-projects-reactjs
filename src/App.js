@@ -1,27 +1,24 @@
-import { IoIosMenu } from "react-icons/io";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
-import Sidebar from "./components/Sidebar/Sidebar";
+import ShowCode from "./components/ShowCode/ShowCode";
 import CovidTracker from "./pages/CovidTracker/CovidTracker";
-
+import { selectCodeShow } from "./redux/openCode/openCode";
 //pages import
 import Todos from "./pages/Todos/Todos";
 
+
 function App() {
+    const isOpenCode = useSelector(selectCodeShow);
   return (
     <>
       <Router>
         <Header />
-        <div className="relative flex md:px-16 px-8">
-          {/* home page left sidebar  */}
-          <Sidebar />
+        <div className="main-app relative flex px-4">
           {/* dynamic rendering components */}
-          <div className="w-full pl-10">
+          <div className="w-full">
             <Switch>
               <Route exact path="/">
-                <FirstScreen />
-              </Route>
-              <Route path="/todos">
                 <Todos />
               </Route>
               <Route path="/covid-tracker">
@@ -30,6 +27,10 @@ function App() {
             </Switch>
           </div>
         </div>
+        <div className={`h-screen ${isOpenCode ? "w-full": "w-0"} bg-gray-900 fixed right-0 top-36 z-50`}>
+          <ShowCode/>
+        </div>
+        
       </Router>
     </>
   );
@@ -37,13 +38,3 @@ function App() {
 
 export default App;
 
-const FirstScreen = () => {
-  return (
-    <div className="w-full h-full flex items-center justify-center flex-col">
-      <h1 className="text-4xl font-bold mb-4 pt-10">Explore My Website</h1>
-      <p className="text-xl text-blue-500">
-        You can use this code in your site
-      </p>
-    </div>
-  );
-};
