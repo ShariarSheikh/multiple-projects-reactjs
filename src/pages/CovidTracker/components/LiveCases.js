@@ -5,7 +5,7 @@ const LiveCases = ({ countries }) => {
         Live Cases by Country
       </h1>
       {/* table */}
-      <div className="max-h-96 overflow-y-scroll md:overflow-y-hidden">
+      <div className="max-h-96 overflow-y-scroll md:overflow-y-auto">
         <table className="min-w-full">
           <thead>
             <tr>

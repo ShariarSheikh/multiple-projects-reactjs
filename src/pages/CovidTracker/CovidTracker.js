@@ -138,7 +138,7 @@ const CovidTracker = () => {
             />
           </div>
           {/* live cases component */}
-          <div className="w-full md:w-auto md:overflow-hidden border border-gray-400 mt-10">
+          <div className="w-full md:w-auto md:overflow-x-hidden border border-gray-400 mt-10">
             <LiveCases countries={table} />
           </div>
         </section>
