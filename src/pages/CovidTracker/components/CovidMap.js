@@ -36,7 +36,7 @@ const CovidMap = ({ zoom, lat, long }) => {
     <ReactMapGL
       {...viewport}
       mapStyle="mapbox://styles/shariardev/ckse6urwi1dv617nuf7ttf10i"
-      mapboxApiAccessToken={process.env.REACT_APP_MAP_BOX_API_KEY}
+      mapboxApiAccessToken={process.env.REACT_APP_MAP_API_KEY}
       width="100%"
       height="100%"
       onViewportChange={(viewport) => setViewport(viewport)}
