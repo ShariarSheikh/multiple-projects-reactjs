@@ -1,0 +1,137 @@
+.loadingScreen {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  z-index: 10000;
+}
+/* progress styles */
+.progress_circular {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 50%;
+  padding: 0.25em;
+  width: 3em;
+  height: 3em;
+  color: white;
+  background-color: transparent;
+  font-size: 16px;
+  overflow: hidden;
+}
+
+.progress_circular::-webkit-progress-bar {
+  background-color: transparent;
+}
+
+/* Indeterminate */
+.progress_circular:indeterminate {
+  -webkit-mask-image: linear-gradient(transparent 50%, black 50%),
+    linear-gradient(to right, transparent 50%, black 50%);
+  mask-image: linear-gradient(transparent 50%, black 50%),
+    linear-gradient(to right, transparent 50%, black 50%);
+  animation: progress_circular 6s infinite cubic-bezier(0.3, 0.6, 1, 1);
+}
+
+:-ms-lang(x),
+.progress_circular:indeterminate {
+  animation: none;
+}
+
+.progress_circular:indeterminate::before,
+.progress_circular:indeterminate::-webkit-progress-value {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  margin-bottom: 0.25em;
+  border: solid 0.25em transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  width: 100% !important;
+  height: 100%;
+  background-color: transparent;
+  animation: pure-material-progress-circular-pseudo 0.75s infinite linear
+    alternate;
+}
+
+.progress_circular:indeterminate::-moz-progress-bar {
+  box-sizing: border-box;
+  border: solid 0.25em transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  animation: pure-material-progress-circular-pseudo 0.75s infinite linear
+    alternate;
+}
+
+.pure-material-progress-circular:indeterminate::-ms-fill {
+  animation-name: -ms-ring;
+}
+
+@keyframes progress_circular {
+  0% {
+    transform: rotate(0deg);
+  }
+  12.5% {
+    transform: rotate(180deg);
+    animation-timing-function: linear;
+  }
+  25% {
+    transform: rotate(630deg);
+  }
+  37.5% {
+    transform: rotate(810deg);
+    animation-timing-function: linear;
+  }
+  50% {
+    transform: rotate(1260deg);
+  }
+  62.5% {
+    transform: rotate(1440deg);
+    animation-timing-function: linear;
+  }
+  75% {
+    transform: rotate(1890deg);
+  }
+  87.5% {
+    transform: rotate(2070deg);
+    animation-timing-function: linear;
+  }
+  100% {
+    transform: rotate(2520deg);
+  }
+}
+
+@keyframes pure-material-progress-circular-pseudo {
+  0% {
+    transform: rotate(-30deg);
+  }
+  29.4% {
+    border-left-color: transparent;
+  }
+  29.41% {
+    border-left-color: currentColor;
+  }
+  64.7% {
+    border-bottom-color: transparent;
+  }
+  64.71% {
+    border-bottom-color: currentColor;
+  }
+  100% {
+    border-left-color: currentColor;
+    border-bottom-color: currentColor;
+    transform: rotate(225deg);
+  }
+}
