@@ -13,18 +13,26 @@ const projectListName = [
     name: "Covid-Tracker",
     link: "/covid-tracker",
   },
+  {
+    id: 3,
+    name: "Shopping-Cart",
+    link: "/shopping-cart",
+  },
 ];
 
 const Header = () => {
   return (
     <header className="sticky top-0 flex justify-between h-20 py-8 px-8 md:px-16 z-50 header-bg border-b border-gray-600">
       {/* left  */}
-      <div className="flex items-center justify-start">
+
+      <Link to="/" className="flex items-center justify-start">
         <h1 className="hidden md:inline-block text-2xl text-white font-bold cursor-pointer">
           Example |
         </h1>
-        <h3 className="text-2xl font-bold cursor-pointer text-gray-50">Dev.S</h3>
-      </div>
+        <h3 className="text-2xl font-bold cursor-pointer text-gray-50">
+          Dev.S
+        </h3>
+      </Link>
 
       {/* middle */}
       <div className="relative h-full flex items-center space-x-3">

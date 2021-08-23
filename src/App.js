@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
-import ShowCode from "./components/ShowCode/ShowCode";
 import CovidTracker from "./pages/CovidTracker/CovidTracker";
 import { selectCodeShow } from "./redux/openCode/openCode";
 //pages import
 import Todos from "./pages/Todos/Todos";
+import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
 
 
 function App() {
@@ -24,11 +24,11 @@ function App() {
               <Route path="/covid-tracker">
                 <CovidTracker />
               </Route>
+              <Route path="/shopping-cart">
+                <ShoppingCart/>
+              </Route>
             </Switch>
           </div>
-        </div>
-        <div className={`h-screen ${isOpenCode ? "w-full": "w-0"} bg-gray-900 fixed right-0 top-36 z-50`}>
-          <ShowCode/>
         </div>
         
       </Router>
