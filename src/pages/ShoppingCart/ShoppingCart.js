@@ -14,7 +14,7 @@ const cartData = [
     img: "https://m.media-amazon.com/images/I/81KbZuKUaVL._AC_SX355_.jpg",
     price: 19.0,
     title: "Hp Laptop",
-    quantity:10,
+    stock:10,
     description: `
     It is a long established fact that a reader will be distracted by the
      readable content of a page when looking at its layout. The point of
@@ -26,7 +26,7 @@ const cartData = [
     img: "https://m.media-amazon.com/images/I/6182S7MYC2L._AC_SX425_.jpg",
     price: 20.0,
     title: "mart speaker with Alexa",
-    quantity:7,
+    stock:7,
     description: `
     It is a long established fact that a reader will be distracted by the
      readable content of a page when looking at its layout. The point of 
@@ -38,7 +38,7 @@ const cartData = [
     img: "https://images-na.ssl-images-amazon.com/images/I/41YZ7JNEqdL.jpg",
     price: 10.0,
     title: "Video Camera",
-    quantity:15,
+    stock:15,
     description: `
     It is a long established fact that a reader will be distracted by the 
     readable content of a page when looking at its layout. The point of using
@@ -50,7 +50,7 @@ const cartData = [
     img: "https://images-na.ssl-images-amazon.com/images/I/41YZ7JNEqdL.jpg",
     price: 31.0,
     title: "Gaming GeForce",
-    quantity:6,
+    stock:6,
     description: `
     It is a long established fact that a reader will be distracted by the 
     readable content of a page when looking at its layout. The point of 

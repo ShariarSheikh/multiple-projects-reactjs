@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 
 const Details = ({ cartData }) => {
   const [item, setItem] = useState({});
-  const [count, setCount] = useState(1);
   const [countItem, setCountItem] = useState(1);
 
   const { id } = useParams();
@@ -15,13 +14,16 @@ const Details = ({ cartData }) => {
   }, [id]);
 
   const increment = () => {
-    setCount((prevState) => prevState + 1);
+    setCountItem((prevState) => prevState + 1);
   };
   const decrement = () => {
-    setCount((prevState) => prevState - 1);
+    setCountItem((prevState) => prevState - 1);
   };
 
-  const selectCount = (e) => {};
+  const selectCount = (e) => {
+    const value = e.target.value;
+    setCountItem((prevState) => value);
+  };
 
   return (
     <main className="w-full">
@@ -47,7 +49,7 @@ const Details = ({ cartData }) => {
           <h1 className="py-2 text-2xl font-semibold">{item.title}</h1>
           <p className="text-xl text-gray-600 font-semibold">$:{item.price}</p>
           <p className="text-sm text-gray-700 mt-2">
-            Stock: <b>{item.quantity}</b>
+            Stock: <b>{item.stock}</b>
           </p>
           {/* add btn */}
           <div className="w-full flex space-x-7 mt-8">
@@ -64,6 +66,7 @@ const Details = ({ cartData }) => {
                   onChange={selectCount}
                   className="w-full outline-none border-none cart-select-arrow cursor-pointer"
                 >
+                  {}
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
