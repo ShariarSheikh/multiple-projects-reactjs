@@ -5,7 +5,7 @@ const CovidMap = ({ zoom, lat, long }) => {
   const [viewport, setViewport] = useState({
     latitude: 37.7577,
     longitude: -122.4376,
-    zoom: 5,
+    zoom: 6,
   });
 
   useEffect(() => {
@@ -35,9 +35,9 @@ const CovidMap = ({ zoom, lat, long }) => {
   return (
     <ReactMapGL
       {...viewport}
-      mapStyle="mapbox://styles/shariardev/ckse6urwi1dv617nuf7ttf10i"
+      mapStyle="mapbox://styles/shariardev/cksog2j83cw4117pdf890gl2j"
       mapboxApiAccessToken={
-        process.env.REACT_APP_MAP_API_KEY || process.env.MAP_API_KEY
+        process.env.REACT_APP_MAP_API_KEY 
       }
       width="100%"
       height="100%"

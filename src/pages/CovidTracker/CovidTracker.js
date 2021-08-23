@@ -15,7 +15,7 @@ const CovidTracker = () => {
   const [countryLocation, setCountryLocation] = useState({
     lat: 37.7577,
     long: -122.4376,
-    zoom: 5,
+    zoom: 6,
   });
 
   //on page reload call these api
@@ -69,13 +69,13 @@ const CovidTracker = () => {
           setCountryLocation({
             lat: 37.7577,
             long: -122.4376,
-            zoom: 5,
+            zoom: 6,
           });
         } else {
           setCountryLocation({
             lat: data.countryInfo.lat,
             long: data.countryInfo.long,
-            zoom: 5,
+            zoom: 6,
           });
         }
 

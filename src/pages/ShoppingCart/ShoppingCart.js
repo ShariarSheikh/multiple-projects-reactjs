@@ -35,7 +35,7 @@ const cartData = [
   },
   {
     id: 3,
-    img: "https://images-na.ssl-images-amazon.com/images/I/41YZ7JNEqdL.jpg",
+    img: "https://m.media-amazon.com/images/I/71OfQF3QUNL._AC_SX466_.jpg",
     price: 10.0,
     title: "Video Camera",
     stock:15,
