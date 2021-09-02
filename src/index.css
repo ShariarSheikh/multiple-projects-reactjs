@@ -30,3 +30,21 @@
   -moz-appearance: none;
   appearance: none;
 }
+/* //cart page height - in shopping cart */
+.cart-height {
+  max-height: 56vh;
+  overflow-y: scroll;
+}
+.cart-height::-webkit-scrollbar {
+  width: 5px;
+}
+
+.cart-height::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(136, 136, 136, 0.3);
+  /* border-radius: 10px; */
+}
+
+.cart-height::-webkit-scrollbar-thumb {
+  /* border-radius: 10px; */
+  -webkit-box-shadow: inset 0 0 6px rgba(161, 161, 161, 0.5);
+}

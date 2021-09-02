@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import openCode from "./openCode/openCode";
+import addToCart from "./addToCart/addToCart";
 
 export const store = configureStore({
   reducer: {
-    isOpenCode: openCode,
+    cart: addToCart,
   },
 });
