@@ -12,11 +12,11 @@ const CovidTracker = () => {
   //table list
   const [table, setTable] = useState([]);
   //country location
-  const [countryLocation, setCountryLocation] = useState({
+  const [mapCenter,setMapCenter] = useState({
     lat: 37.7577,
-    long: -122.4376,
-    zoom: 6,
+    lng: -122.4376,
   });
+  const [mapZoom,setMapZoon] = useState(3)
 
   //on page reload call these api
   useEffect(() => {
@@ -66,16 +66,14 @@ const CovidTracker = () => {
       .then((res) => res.json())
       .then((data) => {
         if (name === "Worldwide") {
-          setCountryLocation({
-            lat: 37.7577,
-            long: -122.4376,
-            zoom: 6,
+          setMapCenter({
+            lat: 34.80746,
+            lng: -40.4796,
           });
         } else {
-          setCountryLocation({
+          setMapCenter({
             lat: data.countryInfo.lat,
-            long: data.countryInfo.long,
-            zoom: 6,
+            lng: data.countryInfo.long,
           });
         }
 
@@ -109,9 +107,8 @@ const CovidTracker = () => {
 
           <CovidMap
             // covidCircle={covidCircle}
-            lat={countryLocation.lat}
-            long={countryLocation.long}
-            zoom={countryLocation.zoom}
+            center={mapCenter}
+            zoom={mapZoom}
           />
         </section>
         {/* information section */}

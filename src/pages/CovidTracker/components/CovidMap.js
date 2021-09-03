@@ -1,32 +1,15 @@
-import { useEffect, useState } from "react";
-import ReactMapGL from "react-map-gl";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
-const CovidMap = ({ zoom, lat, long }) => {
-  const [viewport, setViewport] = useState({
-    latitude: 37.7577,
-    longitude: -122.4376,
-    zoom: 6,
-  });
-
-  useEffect(() => {
-    if (lat && long) {
-      setViewport({ latitude: lat, longitude: long, zoom: zoom });
-    }
-  }, [lat, long]);
-
+const CovidMap = ({ center, zoom }) => {
   return (
-    <ReactMapGL
-      {...viewport}
-      mapStyle="mapbox://styles/shariardev/cksog2j83cw4117pdf890gl2j"
-      mapboxApiAccessToken={
-        process.env.REACT_APP_VERCEL_MAP_API_KEY 
-      }
-      width="100%"
-      height="100%"
-      onViewportChange={(viewport) => setViewport(viewport)}
-    >
-      ;
-    </ReactMapGL>
+    <div className="w-full h-full relative overflow-hidden">
+      <MapContainer center={center} zoom={zoom} scrollWheelZoom={false}>
+        <TileLayer
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+      </MapContainer>
+    </div>
   );
 };
 
