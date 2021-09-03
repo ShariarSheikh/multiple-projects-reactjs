@@ -1,5 +1,5 @@
-import react, { useEffect, useState } from "react";
-import ReactMapGL, { Layer, Source } from "react-map-gl";
+import { useEffect, useState } from "react";
+import ReactMapGL from "react-map-gl";
 
 const CovidMap = ({ zoom, lat, long }) => {
   const [viewport, setViewport] = useState({
@@ -25,11 +25,6 @@ const CovidMap = ({ zoom, lat, long }) => {
       height="100%"
       onViewportChange={(viewport) => setViewport(viewport)}
     >
-      {/* <Source id="my-data" type="geojson" data={geojson}>
-        {covidCircle.map((country) => {
-          <Layer {...layerStyle} />;
-        })}
-      </Source> */}
       ;
     </ReactMapGL>
   );
