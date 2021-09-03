@@ -14,30 +14,12 @@ const CovidMap = ({ zoom, lat, long }) => {
     }
   }, [lat, long]);
 
-  // const layerStyle = {
-  //   id: "point",
-  //   type: "circle",
-  //   paint: {
-  //     "circle-radius": 10,
-  //     "circle-color": "#DC143C",
-  //   },
-  // };
-  // const geojson = {
-  //   type: "FeatureCollection",
-  //   features: [
-  //     {
-  //       type: "Feature",
-  //       geometry: { type: "Point", coordinates: [long, lat] },
-  //     },
-  //   ],
-  // };
-
   return (
     <ReactMapGL
       {...viewport}
       mapStyle="mapbox://styles/shariardev/cksog2j83cw4117pdf890gl2j"
       mapboxApiAccessToken={
-        process.env.REACT_APP_MAP_API_KEY 
+        process.env.REACT_APP_VERCEL_MAP_API_KEY 
       }
       width="100%"
       height="100%"
