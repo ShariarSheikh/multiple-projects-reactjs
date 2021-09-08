@@ -1,10 +1,9 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import CovidMap from "./components/CovidMap";
 import InfoBox from "./components/InfoBox";
 import LiveCases from "./components/LiveCases";
-import CovidMap from "./components/CovidMap";
 
-const CovidTracker = () => {
+const Index = () => {
   const [countriesListName, setCountriesListName] = useState([]);
   const [selectCountry, setSelectCountry] = useState("Worldwide");
   //.............................................................
@@ -12,11 +11,11 @@ const CovidTracker = () => {
   //table list
   const [table, setTable] = useState([]);
   //country location
-  const [mapCenter,setMapCenter] = useState({
+  const [mapCenter, setMapCenter] = useState({
     lat: 37.7577,
     lng: -122.4376,
   });
-  const [mapZoom,setMapZoon] = useState(3)
+  const [mapZoom, setMapZoon] = useState(7);
 
   //on page reload call these api
   useEffect(() => {
@@ -65,32 +64,22 @@ const CovidTracker = () => {
     await fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        if (name === "Worldwide") {
-          setMapCenter({
-            lat: 34.80746,
-            lng: -40.4796,
-          });
-        } else {
-          setMapCenter({
-            lat: data.countryInfo.lat,
-            lng: data.countryInfo.long,
-          });
-        }
-
         setCountryInfo(data);
+        setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+        setMapZoon(7);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  // console.log(table);
   return (
     <>
       <main className="relative w-full covid-bg min-h-screen">
         {/* map section */}
         <section className="map-h relative w-full bg-gray-900">
-          <div className="absolute right-0 top-0 z-10">
+          {/* countries list */}
+          <div className="absolute right-0 top-0 z-40">
             <select
               className="shadow-md px-5 py-4 outline-none bg-black text-gray-50"
               value={selectCountry}
@@ -106,7 +95,6 @@ const CovidTracker = () => {
           </div>
 
           <CovidMap
-            // covidCircle={covidCircle}
             center={mapCenter}
             zoom={mapZoom}
           />
@@ -149,4 +137,4 @@ const CovidTracker = () => {
   );
 };
 
-export default CovidTracker;
+export default Index;

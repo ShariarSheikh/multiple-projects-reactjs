@@ -1,19 +1,11 @@
-import { useState ,useEffect  } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Header from "./components/Header/Header";
-import FirstLoadingScreen from "./components/FirstLoadingScreen/FirstLoadingScreen";
-//pages import
-import Todos from "./pages/Todos/Todos";
-import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
-import CovidTracker from "./pages/CovidTracker/CovidTracker";
+import ChatApp from "./pages/ChatApp/Index";
+import CovidTracker from "./pages/CovidTracker/Index";
+import ShoppingCart from "./pages/ShoppingCart/Index";
+import Todos from "./pages/Todos/Index";
 
 function App() {
-  const [spinner, setSpinner] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setSpinner(false);
-    }, 1000);
-  }, []);
   return (
     <main>
       <Header />
@@ -22,10 +14,13 @@ function App() {
         {/* dynamic rendering components */}
         <div className="w-full">
           <Switch>
-            <Route exact path="/">
+            <Route path="/todo">
               <Todos />
             </Route>
-            <Route path="/covid-tracker">
+            <Route path="/chat">
+              <ChatApp />
+            </Route>
+            <Route exact path="/">
               <CovidTracker />
             </Route>
             <Route path="/shopping-cart">

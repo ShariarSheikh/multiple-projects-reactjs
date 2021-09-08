@@ -2,7 +2,7 @@ import { useState } from "react";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 
-const Todos = () => {
+const Index = () => {
   const [storedTodo, setStoredTodo] = useState([]);
   const [isEdit, setIsEdit] = useState({ open: false, todoId: undefined });
 
@@ -46,4 +46,4 @@ const Todos = () => {
   );
 };
 
-export default Todos;
+export default Index;

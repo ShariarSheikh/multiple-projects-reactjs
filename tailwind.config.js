@@ -27,8 +27,15 @@ module.exports = {
   },
   variants: {
     extend: {
-      divideColor: ["group-hover"],
+      backgroundColor: ["active"],
+      // ...
+      borderColor: ["focus-visible", "first"],
+      // ...
+      textColor: ["visited"],
+      //...
+      scale: ["active", "group-hover"],
+      //...
+      opacity: ["disabled"],
     },
   },
-  plugins: [],
 };

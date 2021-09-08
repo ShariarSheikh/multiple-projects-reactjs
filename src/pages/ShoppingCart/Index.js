@@ -5,8 +5,8 @@ import Header from "./components/Header";
 import ProductsFeed from "./components/ProductsFeed";
 import { cartData } from "./components/cartData";
 
-const ShoppingCart = () => {
-  const { url, path } = useRouteMatch();
+const Index = () => {
+  const { url } = useRouteMatch();
   return (
     <main className="w-full overflow-hidden min-h-screen bg-white">
       <section className="relative max-w-screen-lg m-auto">
@@ -18,7 +18,7 @@ const ShoppingCart = () => {
               <ProductsFeed cartData={cartData} />
             </Route>
             <Route path={`${url}/details/:id`}>
-              <Details cartData={cartData} />
+              <Details />
             </Route>
             <Route path={`${url}/cart`}>
               <Cart />
@@ -30,4 +30,4 @@ const ShoppingCart = () => {
   );
 };
 
-export default ShoppingCart;
+export default Index;

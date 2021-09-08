@@ -1,22 +1,26 @@
-import { useState } from "react";
 import { AiFillGithub } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 const projectListName = [
   {
     id: 1,
-    name: "Todos",
+    name: "Covid-Tracker",
     link: "/",
   },
   {
     id: 2,
-    name: "Covid-Tracker",
-    link: "/covid-tracker",
+    name: "Chat App",
+    link: "/chat",
   },
   {
     id: 3,
     name: "Shopping-Cart",
     link: "/shopping-cart",
+  },
+  {
+    id: 4,
+    name: "Todos",
+    link: "/todo",
   },
 ];
 
@@ -37,7 +41,11 @@ const Header = () => {
       {/* middle */}
       <div className="relative h-full flex items-center space-x-3">
         {projectListName.map(({ id, name, link }) => (
-          <Link key={id} to={link} className="text-sm font-bold text-white">
+          <Link
+            key={id}
+            to={link}
+            className="text-sm font-bold text-white"
+          >
             {name}
           </Link>
         ))}

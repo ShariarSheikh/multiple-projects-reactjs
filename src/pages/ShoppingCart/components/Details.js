@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addProduct } from "../../../redux/addToCart/addToCart";
+import { cartData } from "./cartData";
 
-const Details = ({ cartData }) => {
+const Details = () => {
   const [item, setItem] = useState({});
   const [countItem, setCountItem] = useState(1);
   //..
@@ -11,7 +12,7 @@ const Details = ({ cartData }) => {
 
   const { id } = useParams();
   useEffect(() => {
-    const findItem = cartData.find((item) => item.id == id);
+    const findItem = cartData.find((item) => item.id === Number(id));
     setItem(findItem);
   }, [id]);
 
