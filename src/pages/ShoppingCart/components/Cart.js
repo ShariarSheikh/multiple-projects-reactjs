@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  incrementQuantity,
-  selectCart,
-} from "../../../redux/addToCart/addToCart";
+import { selectCart } from "../../../redux/addToCart/addToCart";
 
 const Cart = () => {
   const [totalItems, setTotalItems] = useState(0);
@@ -12,15 +9,8 @@ const Cart = () => {
   const cartData = useSelector(selectCart);
 
   useEffect(() => {
-    let items = 0;
-    let prices = 0;
-    cartData.forEach((item) => {
-      items = +item.quantity;
-      prices = +item.quantity * item.price;
-    });
-    setTotalPrice(prices);
-    setTotalItems(items);
-  }, [cartData, totalItems, totalPrice, setTotalItems, setTotalPrice]);
+    console.log(cartData);
+  }, [cartData]);
 
   return (
     <div className="w-full relative mt-8">
@@ -64,7 +54,6 @@ const CartItem = ({ id, img, price, title, quantity }) => {
   const increment = (id) => {
     setCountQuantity(countQuantity + 1);
     // update state
-    dispatch(incrementQuantity(parseInt(id), countQuantity));
   };
   //decrement quantity of items
   const decrement = () => {
@@ -73,6 +62,8 @@ const CartItem = ({ id, img, price, title, quantity }) => {
       setCountQuantity(countQuantity - 1);
     }
   };
+  //delete items from cat
+  const deleteHandler = (id) => {};
   return (
     <div
       className="w-full h-24 border-b border-gray-300
@@ -109,7 +100,10 @@ const CartItem = ({ id, img, price, title, quantity }) => {
         $<strong>{price}</strong>
       </div>
       <div>
-        <AiOutlineDelete className="h-6 w-6 cursor-pointer text-red-600" />
+        <AiOutlineDelete
+          className="h-6 w-6 cursor-pointer text-red-600"
+          onClick={() => deleteHandler(id)}
+        />
       </div>
     </div>
   );

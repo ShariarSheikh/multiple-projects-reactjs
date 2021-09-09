@@ -10,12 +10,13 @@ const Index = () => {
   const [countryInfo, setCountryInfo] = useState({});
   //table list
   const [table, setTable] = useState([]);
-  //country location
+  //country map
   const [mapCenter, setMapCenter] = useState({
     lat: 37.7577,
     lng: -122.4376,
   });
   const [mapZoom, setMapZoon] = useState(7);
+  const [mapCountries, setMapCountries] = useState([]);
 
   //on page reload call these api
   useEffect(() => {
@@ -35,6 +36,8 @@ const Index = () => {
           }));
           //collect countries data
           setTable(tableList);
+          // map countries
+          setMapCountries(data);
         });
     };
     fetchCountriesName();
@@ -94,10 +97,7 @@ const Index = () => {
             </select>
           </div>
 
-          <CovidMap
-            center={mapCenter}
-            zoom={mapZoom}
-          />
+          <CovidMap countries={mapCountries} center={mapCenter} zoom={mapZoom} />
         </section>
         {/* information section */}
         <div className="text-center text-2xl text-gray-100 font-semibold">

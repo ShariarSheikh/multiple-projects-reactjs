@@ -1,5 +1,7 @@
 import { AiFillGithub } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
+import { loginHandler } from "../../redux/loginOpen/loginOpen";
 
 const projectListName = [
   {
@@ -25,6 +27,14 @@ const projectListName = [
 ];
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const router = useHistory();
+
+  const pushHandler = () => {
+    const token = localStorage.getItem("token");
+    token && router.push("/admin");
+    !token && dispatch(loginHandler(true));
+  };
   return (
     <header className="sticky top-0 flex justify-between h-20 py-8 px-8 md:px-16 z-50 header-bg border-b border-gray-600">
       {/* left  */}
@@ -41,11 +51,7 @@ const Header = () => {
       {/* middle */}
       <div className="relative h-full flex items-center space-x-3">
         {projectListName.map(({ id, name, link }) => (
-          <Link
-            key={id}
-            to={link}
-            className="text-sm font-bold text-white"
-          >
+          <Link key={id} to={link} className="text-sm font-bold text-white">
             {name}
           </Link>
         ))}
@@ -56,16 +62,16 @@ const Header = () => {
         <a href="https://github.com/ShariarSheikh">
           <AiFillGithub className="w-9 h-9 text-white" />
         </a>
-        <a
-          href="https://shariar.vercel.app/"
+        <div
+          onClick={() => pushHandler()}
           className="flex justify-center items-center cursor-pointer space-x-2"
         >
           <img
             className="object-cover w-9 h-9 rounded-full border-2 border-blue-500"
-            src="https://media.istockphoto.com/photos/illustration-of-smiling-happy-man-with-laptop-sitting-in-armchair-picture-id1226886130?b=1&k=6&m=1226886130&s=170667a&w=0&h=9VyVuQvQfzzQaYB1iEfy-p5YaEe59lzeIe3BfkTOnBE="
+            src="https://avatars.githubusercontent.com/u/69359203?s=400&u=1b2da86a40bf442bb66c47040b769d523d8b28f4&v=4"
             alt="person profile"
           />
-        </a>
+        </div>
       </div>
     </header>
   );

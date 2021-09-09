@@ -33,10 +33,14 @@ const Details = () => {
   };
 
   //add to cart
-  const addHandler = (id) => {
+  const addHandler = (item) => {
     const product = {
-      id: id,
-      quantity: parseInt(countItem),
+      img: item.img,
+      title: item.title,
+      price: item.price,
+      id: item.id,
+      stock: item.stock,
+      description: item.description,
     };
     dispatch(addProduct(product));
   };
@@ -78,7 +82,7 @@ const Details = () => {
               selectCount={selectCount}
             />
             <div
-              onClick={() => addHandler(item.id)}
+              onClick={() => addHandler(item)}
               className=" h-10 flex items-center px-4 bg-black text-white rounded-md cursor-pointer"
             >
               Add To Cart
