@@ -1,9 +1,9 @@
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import Cart from "./components/Cart";
+import { cartData } from "./components/cartData";
 import Details from "./components/Details";
 import Header from "./components/Header";
 import ProductsFeed from "./components/ProductsFeed";
-import { cartData } from "./components/cartData";
 
 const Index = () => {
   const { url } = useRouteMatch();
@@ -12,8 +12,8 @@ const Index = () => {
       <section className="relative max-w-screen-lg m-auto">
         <Header />
         {/* products feed */}
-        <Switch>
-          <div>
+        <div>
+          <Switch>
             <Route exact path={`${url}/`}>
               <ProductsFeed cartData={cartData} />
             </Route>
@@ -23,8 +23,8 @@ const Index = () => {
             <Route path={`${url}/cart`}>
               <Cart />
             </Route>
-          </div>
-        </Switch>
+          </Switch>
+        </div>
       </section>
     </main>
   );

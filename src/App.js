@@ -18,8 +18,8 @@ function App() {
       {/* {spinner && <FirstLoadingScreen />} */}
       <div className="main-app relative flex px-4">
         {/* dynamic rendering components */}
-        <Switch>
-          <div className="w-full">
+        <div className="w-full">
+          <Switch>
             <Route path="/todo">
               <Todos />
             </Route>
@@ -33,8 +33,8 @@ function App() {
               <ShoppingCart />
             </Route>
             <PrivateRoute path="/admin" exact={false} component={Admin} />
-          </div>
-        </Switch>
+          </Switch>
+        </div>
       </div>
       {loginBox && <Login />}
     </main>

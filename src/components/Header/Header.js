@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { AiFillGithub } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
@@ -27,13 +28,20 @@ const projectListName = [
 ];
 
 const Header = () => {
+  const [openComponent, setOpenComponent] = useState(false);
   const dispatch = useDispatch();
   const router = useHistory();
 
-  const pushHandler = () => {
-    const token = localStorage.getItem("token");
+  //login
+  const login = () => {
+    const token = JSON.parse(localStorage.getItem("token"));
     token && router.push("/admin");
     !token && dispatch(loginHandler(true));
+  };
+  //logout
+  const logout = () => {
+    localStorage.removeItem("token");
+    router.push("/");
   };
   return (
     <header className="sticky top-0 flex justify-between h-20 py-8 px-8 md:px-16 z-50 header-bg border-b border-gray-600">
@@ -63,14 +71,15 @@ const Header = () => {
           <AiFillGithub className="w-9 h-9 text-white" />
         </a>
         <div
-          onClick={() => pushHandler()}
-          className="flex justify-center items-center cursor-pointer space-x-2"
+          onClick={() => setOpenComponent(!openComponent)}
+          className="relative flex justify-center items-center cursor-pointer space-x-2"
         >
           <img
             className="object-cover w-9 h-9 rounded-full border-2 border-blue-500"
             src="https://avatars.githubusercontent.com/u/69359203?s=400&u=1b2da86a40bf442bb66c47040b769d523d8b28f4&v=4"
             alt="person profile"
           />
+          {openComponent && <JoinOut login={login} logout={logout} />}
         </div>
       </div>
     </header>
@@ -78,3 +87,15 @@ const Header = () => {
 };
 
 export default Header;
+
+const JoinOut = ({ login, logout }) => {
+  return (
+    <div className="absolute top-12 right-1 bg-white p-3 ">
+      {localStorage.getItem("token") ? (
+        <button onClick={() => logout()}>Logout</button>
+      ) : (
+        <button onClick={() => login()}>Login</button>
+      )}
+    </div>
+  );
+};
