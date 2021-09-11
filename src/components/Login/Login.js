@@ -31,7 +31,7 @@ const Login = () => {
       },
       body: JSON.stringify(loginData),
     };
-    fetch(`${process.env.REACT_APP_VERCEL_ADMIN_URL}/api/auth/admin`, config)
+    fetch(`${process.env.REACT_APP_VERCEL_URL}/api/auth/admin`, config)
       .then((res) => res.json())
       .then((data) => {
         localStorage.setItem(
