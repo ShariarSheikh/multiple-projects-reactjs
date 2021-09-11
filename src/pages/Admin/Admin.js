@@ -34,7 +34,7 @@ const Admin = () => {
       },
     };
     //get private access
-    fetch(`${process.env.REACT_APP_VERCEL_URL}/api/private`, config)
+    fetch(`https://radiant-mountain-69015.herokuapp.com/api/private`, config)
       .then((res) => res.json())
       .then((data) => {
         !data.success && router.replace({ pathname: "/" });
