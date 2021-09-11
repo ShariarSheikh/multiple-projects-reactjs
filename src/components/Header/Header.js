@@ -89,12 +89,16 @@ const Header = () => {
 export default Header;
 
 const JoinOut = ({ login, logout }) => {
+  const router = useHistory();
   return (
     <div className="absolute top-12 right-1 bg-white p-3 ">
       {localStorage.getItem("token") ? (
-        <button onClick={() => logout()}>Logout</button>
+        <button onClick={() => router.push("/admin")}>Profile</button>
       ) : (
         <button onClick={() => login()}>Login</button>
+      )}
+      {localStorage.getItem("token") && (
+        <button onClick={() => logout()}>Logout</button>
       )}
     </div>
   );

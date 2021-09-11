@@ -44,6 +44,11 @@ const Admin = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  const logout = () => {
+    localStorage.removeItem("token");
+    router.push("/");
+  };
+
   if (loading) {
     return (
       <div className="text-gray-300 w-full h-screen flex items-center justify-center">
@@ -54,16 +59,20 @@ const Admin = () => {
 
   return (
     <main className="min-h-screen max-w-7xl w-full m-auto">
-      <header className="w-full flex space-x-5 items-center border border-gray-500 py-4 pl-3">
-        {links.map(({ id, text, link }) => (
-          <div
-            onClick={() => router.push(`${path}${link}`)}
-            key={id}
-            className="text-gray-300 cursor-pointer"
-          >
-            {text}
-          </div>
-        ))}
+      <header className="w-full flex justify-between  items-center border border-gray-500 py-4 px-3">
+        <div className="flex space-x-4">
+          {links.map(({ id, text, link }) => (
+            <div
+              onClick={() => router.push(`${path}${link}`)}
+              key={id}
+              className="text-gray-300 cursor-pointer"
+            >
+              {text}
+            </div>
+          ))}
+        </div>
+
+        <div className="text-gray-300 font-semibold cursor-pointer" onClick={() => logout()}>Logout</div>
       </header>
 
       <Switch>
