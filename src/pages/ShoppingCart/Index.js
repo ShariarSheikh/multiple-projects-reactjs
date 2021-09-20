@@ -1,12 +1,18 @@
 import { Route, Switch, useRouteMatch } from "react-router-dom";
-import { useGetAllProductsQuery } from "../../redux/shoppingCart/productsApi";
+import useFetch from "../../hooks/useFetch";
 import Cart from "./components/Cart";
 import Header from "./components/Header";
 import ProductsFeed from "./components/ProductsFeed";
 
 const Index = () => {
-  const { data, error, isLoading } = useGetAllProductsQuery();
+  const { loading, error, data } = useFetch(
+    `https://fakestoreapi.com/products`
+  );
   const { url } = useRouteMatch();
+
+
+  
+
 
   return (
     <main className="w-full overflow-hidden min-h-screen bg-white">
@@ -16,7 +22,7 @@ const Index = () => {
         <div>
           <Switch>
             <Route exact path={`${url}/`}>
-              <ProductsFeed loading={isLoading} error={error} data={data} />
+              <ProductsFeed loading={loading} error={error} data={data} />
             </Route>
             <Route path={`${url}/cart`}>
               <Cart />
