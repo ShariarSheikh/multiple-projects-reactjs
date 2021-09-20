@@ -1,10 +1,24 @@
 import { configureStore } from "@reduxjs/toolkit";
-import addToCart from "./addToCart/addToCart";
 import loginOpen from "./loginOpen/loginOpen";
+import cartReducer, { getTotals } from "./shoppingCart/cartSlice";
+import { productsApi } from "./shoppingCart/productsApi";
+import productsReducer, { productsFetch } from "./shoppingCart/productSlice";
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
-    cart: addToCart,
+    //shopping cart state
+    products: productsReducer,
+    cart: cartReducer,
+    [productsApi.reducerPath]: productsApi.reducer,
+    //login box toggle
     loginBox: loginOpen,
   },
+  //middleware
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(productsApi.middleware),
 });
+
+store.dispatch(productsFetch());
+store.dispatch(getTotals());
+
+export default store;

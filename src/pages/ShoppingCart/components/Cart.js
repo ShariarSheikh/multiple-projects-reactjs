@@ -1,44 +1,47 @@
-import { useEffect, useState } from "react";
-import { AiOutlineDelete } from "react-icons/ai";
+import { useEffect } from "react";
+import { VscClose } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCart } from "../../../redux/addToCart/addToCart";
+import {
+  getTotals,
+  removeFromCart,
+} from "../../../redux/shoppingCart/cartSlice";
+import { IncDec } from "../../../util";
 
 const Cart = () => {
-  const [totalItems, setTotalItems] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(0);
-  const cartData = useSelector(selectCart);
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
+  const { cartTotalQuantity } = useSelector((state) => state.cart);
 
   useEffect(() => {
-    console.log(cartData);
-  }, [cartData]);
+    dispatch(getTotals());
+  }, [cart, dispatch]);
 
   return (
     <div className="w-full relative mt-8">
-      <h1 className="text-2xl">Shopping Cart</h1>
-      <p className="text-gray-600 text-sm">Total Items {totalItems}</p>
-      <div className="flex flex-row w-full mt-8">
-        {/* cart list */}
-        <div className="w-2/3 cart-height">
-          {cartData.map((item) => (
-            <CartItem
-              id={item.id}
-              key={item.id}
-              img={item.img}
-              price={item.price}
-              title={item.title}
-              quantity={item.quantity}
-            />
-          ))}
-        </div>
-        {/* process cart order */}
-        <div className="pl-4 w-1/3 ">
-          <p className="mb-3">
-            Total Cost: <strong>${totalPrice}</strong>
-          </p>
-          <button className="bg-black text-gray-50 cursor-pointer rounded-md h-10 w-full">
-            Process Order
-          </button>
-        </div>
+      <div>
+        <h1 className="text-2xl">Shopping Cart</h1>
+        <p className="text-gray-600 text-sm">Total Items {cartTotalQuantity}</p>
+        {cartTotalQuantity ? (
+          <div className="flex flex-row w-full mt-8">
+            {/* cart list */}
+            <div className="w-2/3 cart-height">
+              {<CartItem key={cart.cartItems.id} items={cart.cartItems} />}
+              <div className="w-full text-right pr-3 pt-3 ">
+                Total:{cart.cartTotalAmount.toFixed(2)}
+              </div>
+            </div>
+
+            {/* process cart order */}
+            <div className="pl-4 w-1/3 ">
+              <p className="mb-3">
+                Total Cost: <strong>${cart.cartTotalAmount.toFixed(2)}</strong>
+              </p>
+              <button className="bg-black text-gray-50 cursor-pointer rounded-md h-10 w-full">
+                Process Order
+              </button>
+            </div>
+          </div>
+        ) : ( <div className="text-center text-xl">0 Items in cart</div> )}
       </div>
     </div>
   );
@@ -46,65 +49,71 @@ const Cart = () => {
 
 export default Cart;
 
-const CartItem = ({ id, img, price, title, quantity }) => {
-  const [countQuantity, setCountQuantity] = useState(quantity);
+const CartItem = ({ items }) => {
   const dispatch = useDispatch();
-
-  //increment quantity of items
-  const increment = (id) => {
-    setCountQuantity(countQuantity + 1);
-    // update state
-  };
-  //decrement quantity of items
-  const decrement = () => {
-    if (countQuantity <= 1) {
-    } else {
-      setCountQuantity(countQuantity - 1);
-    }
-  };
   //delete items from cat
-  const deleteHandler = (id) => {};
+  const deleteHandler = (item) => {
+    dispatch(removeFromCart(item));
+  };
+
   return (
-    <div
-      className="w-full h-24 border-b border-gray-300
-      flex items-center justify-between px-3 font-semibold"
-    >
-      {/* img */}
-      <div>
-        <img className="object-contain w-28" src={img} alt="product" />
-      </div>
-      {/* name */}
-      <div>
-        <h3>{title}</h3>
-      </div>
-      <div>
-        <div className="flex items-center border border-gray-300 h-10 justify-between">
-          <div
-            onClick={() => decrement(id, countQuantity)}
-            className="h-full w-7 bg-gray-100 flex items-center justify-center cursor-pointer text-2xl"
-          >
-            -
-          </div>
-          <div className="relative w-10 h-full flex justify-center items-center">
-            <div className="absolute">{countQuantity}</div>
-          </div>
-          <div
-            onClick={() => increment(id, countQuantity)}
-            className="h-full w-7 bg-gray-100 flex items-center justify-center cursor-pointer text-2xl"
-          >
-            +
-          </div>
-        </div>
-      </div>
-      <div>
-        $<strong>{price}</strong>
-      </div>
-      <div>
-        <AiOutlineDelete
-          className="h-6 w-6 cursor-pointer text-red-600"
-          onClick={() => deleteHandler(id)}
-        />
-      </div>
-    </div>
+    <table className="min-w-full">
+      <thead>
+        <tr>
+          <th className="px-3 py-3  text-left leading-4 text-gray-400 tracking-wider">
+            Product Details
+          </th>
+          <th className="px-3 py-3 text-left text-sm leading-4 text-gray-400 tracking-wider">
+            Quantity
+          </th>
+          <th className="px-3 py-3  text-left text-sm leading-4 text-gray-400 tracking-wider">
+            Price
+          </th>
+          <th className="px-3 py-3  text-left text-sm leading-4 text-gray-400 tracking-wider">
+            Total
+          </th>
+        </tr>
+      </thead>
+      {items.map((itm) => {
+        const totalPrice = itm.price * itm.cartQuantity;
+        return (
+          <tbody className="bg-transparent" key={itm.id}>
+            <tr className="border-t border-gray-300">
+              <td className="px-6 py-4 whitespace-no-wrap ">
+                <div className="flex items-center space-x-3">
+                  <div>
+                    <img
+                      className="w-16 h-16 object-contain "
+                      src={itm.image}
+                      alt="country flag"
+                    />
+                  </div>
+                  <div className="text-sm">{itm.title}</div>
+                </div>
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap ">
+                <div className="text-sm ">
+                  <IncDec cartItems={itm} />
+                </div>
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap  text-sm leading-5">
+                {itm.price}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                <div className="flex item-center">
+                  {totalPrice.toFixed(2)}
+                  <div>
+                    <VscClose
+                      className="h-6 w-6 cursor-pointer ml-3 text-black"
+                      onClick={() => deleteHandler(itm)}
+                    />
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        );
+      })}
+    </table>
   );
 };

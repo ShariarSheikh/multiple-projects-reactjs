@@ -15,7 +15,6 @@ const Index = () => {
     lat: 37.7577,
     lng: -122.4376,
   });
-  const [mapZoom, setMapZoon] = useState(7);
   const [mapCountries, setMapCountries] = useState([]);
 
   //on page reload call these api
@@ -69,7 +68,6 @@ const Index = () => {
       .then((data) => {
         setCountryInfo(data);
         setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
-        setMapZoon(7);
       })
       .catch((err) => {
         console.log(err);
@@ -97,7 +95,7 @@ const Index = () => {
             </select>
           </div>
 
-          <CovidMap countries={mapCountries} center={mapCenter} zoom={mapZoom} />
+          <CovidMap countries={mapCountries} center={mapCenter}/>
         </section>
         {/* information section */}
         <div className="text-center text-2xl text-gray-100 font-semibold">

@@ -1,14 +1,10 @@
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { selectCart } from "../../../redux/addToCart/addToCart";
+
 
 const Header = () => {
-  const cartData = useSelector(selectCart);
-  const totalItems = cartData.reduce(
-    (total, prd) => total + parseInt(prd.quantity),
-    0
-  );
+  const {cartTotalQuantity} = useSelector((state) => state.cart)
   const router = useHistory();
 
   return (
@@ -28,12 +24,12 @@ const Header = () => {
       >
         <AiOutlineShoppingCart className="h-6 w-6 text-gray-600 cursor-pointer" />
 
-        {cartData.length > 0 && (
+        {cartTotalQuantity > 0 && (
           <div
             className="absolute top-2 left-3 h-5 w-5 rounded-full bg-red-600 flex
          items-center justify-center"
           >
-            <p className="text-xm text-white">{totalItems}</p>
+            <p className="text-xm text-white">{cartTotalQuantity}</p>
           </div>
         )}
       </div>
