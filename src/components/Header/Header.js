@@ -7,23 +7,13 @@ import { loginHandler } from "../../redux/loginOpen/loginOpen";
 const projectListName = [
   {
     id: 1,
-    name: "Covid-Tracker",
+    name: "Todos",
     link: "/",
   },
   {
     id: 2,
-    name: "Chat App",
-    link: "/chat",
-  },
-  {
-    id: 3,
     name: "Shopping-Cart",
     link: "/shopping-cart",
-  },
-  {
-    id: 4,
-    name: "Todos",
-    link: "/todo",
   },
 ];
 

@@ -10,10 +10,6 @@ const Index = () => {
   );
   const { url } = useRouteMatch();
 
-
-  
-
-
   return (
     <main className="w-full overflow-hidden min-h-screen bg-white">
       <section className="relative max-w-screen-lg m-auto">
